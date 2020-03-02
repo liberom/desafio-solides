@@ -1,0 +1,35 @@
+<div class="container">
+  <h2>Projetos</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Descrição</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @projects.each do |project| %>
+        <tr>
+          <td>
+            <%= link_to project do %>
+              <%= project.name %>
+            <% end %>
+          </td>
+          <td><%= project.description %></td>
+          <!-- <td><%#= link_to 'Apagar', project, method: :delete, data: { confirm: 'Tem certeza?' } %></td> -->
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <div class="text-center">
+    <%= link_to 'Novo Projeto', new_project_path, class: 'btn btn-primary' %>
+  </div>
+
+</div>
+
+
+

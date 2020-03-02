@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>Registro</h2>
+  <p>
+    <strong>ID:</strong>
+    <%= @log.id %>
+  </p>
+  <p>
+    <strong>Usuário:</strong>
+    <%= @log.user.email %>
+  </p>
+
+  <p>
+    <strong>Projeto:</strong>
+    <%= @log.project.name %>
+  </p>
+
+  <p>
+    <strong>Descrição:</strong>
+    <%= @log.tag.description %>
+  </p>
+
+  <%= link_to 'Voltar', logs_path, class: 'btn btn-secondary' %> <!-- | -->
+  <%#= link_to 'Editar', edit_log_path(@log), class: 'btn btn-warning' %> <!-- | -->
+  <%= link_to 'Apagar', @log, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %>
+
+</div>
+
+

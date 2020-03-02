@@ -1,0 +1,21 @@
+<div class="container">
+  <h2>Evento</h2>
+  <p>
+    <strong>Data:</strong>
+    <%= @event.date %>
+  </p>
+  <p>
+    <strong>Duração:</strong>
+    <%= @event.duration.strftime('%H:%M:%S') %>
+  </p>
+  <p>
+    <strong>Tipo:</strong>
+    <%= @event.log.tag.description.slice!(6..-1).upcase %>%>
+  </p>
+
+  <%= link_to 'Voltar', events_path, class: 'btn btn-secondary' %> |
+  <%= link_to 'Editar', edit_event_path(@event), class: 'btn btn-warning' %> |
+  <%= link_to 'Apagar', event, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %>
+</div>
+
+
