@@ -2,7 +2,7 @@
   <h1>Bem vindo(a) ao Timesheet App!</h1>
   <% if user_signed_in?%>
     <p>Acesse seu <%= link_to "Timesheet", logs_path %> ou crie um novo registro.</p>
-    <% if @projects.nil? %>
+    <% if @projects.empty? %>
       <h2>Projeto</h2>
       <div class="text-center">
         <%= link_to 'Novo Projeto', new_project_path, class: 'btn btn-primary' %>
@@ -39,7 +39,7 @@
     </div>
     <% end %>
 
-    <% unless @events.nil? %>
+    <% unless @events.empty? %>
 
       <h2>Resumo</h2>
 
