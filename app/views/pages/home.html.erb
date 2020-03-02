@@ -3,7 +3,6 @@
   <% if user_signed_in?%>
     <p>Acesse seu <%= link_to "Timesheet", logs_path %> ou crie um novo registro.</p>
     <% if @projects.empty? %>
-      <h2>Projeto</h2>
       <div class="text-center">
         <%= link_to 'Novo Projeto', new_project_path, class: 'btn btn-primary' %>
       </div>
@@ -20,6 +19,7 @@
 
       <tbody>
         <% @projects.each do |project| %>
+
           <tr>
             <td>
               <%= link_to project do %>
