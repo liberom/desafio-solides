@@ -1,5 +1,8 @@
-<h1>New Log</h1>
+<div class="container">
+  <h2>Novo Registro</h2>
 
-<%= render 'form', log: @log %>
+  <%= render 'form', project: @project, log: @log %>
 
-<%= link_to 'Back', logs_path %>
+  <%= link_to 'Voltar', logs_path, class: 'btn btn-secondary' %>
+</div>
+

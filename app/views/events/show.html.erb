@@ -1,24 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <h2>Evento</h2>
+  <p>
+    <strong>Data:</strong>
+    <%= @event.date %>
+  </p>
+  <p>
+    <strong>Duração:</strong>
+    <%= @event.duration.strftime('%H:%M:%S') %>
+  </p>
+  <p>
+    <strong>Tipo:</strong>
+    <%= @event.log.tag.description.slice!(6..-1).upcase %>%>
+  </p>
 
-<p>
-  <strong>Duration:</strong>
-  <%= @event.duration %>
-</p>
+  <%= link_to 'Voltar', events_path, class: 'btn btn-secondary' %> |
+  <%= link_to 'Editar', edit_event_path(@event), class: 'btn btn-warning' %> |
+  <%= link_to 'Apagar', event, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Date:</strong>
-  <%= @event.date %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
-
-<p>
-  <strong>Log:</strong>
-  <%= @event.log_id %>
-</p>
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>

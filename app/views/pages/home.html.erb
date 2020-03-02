@@ -1,2 +1,79 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <h1>Bem vindo(a) ao Timesheet App!</h1>
+  <% if user_signed_in?%>
+    <p>Acesse seu <%= link_to "Timesheet", logs_path %> ou crie um novo registro.</p>
+    <% if @projects.nil? %>
+      <h2>Projeto</h2>
+      <div class="text-center">
+        <%= link_to 'Novo Projeto', new_project_path, class: 'btn btn-primary' %>
+      </div>
+    <% else %>
+      <h2>Projeto</h2>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @projects.each do |project| %>
+          <tr>
+            <td>
+              <%= link_to project do %>
+                <%= project.name %>
+              <% end %>
+            </td>
+            <td><%= project.description %></td>
+           <!--  <td><%#= link_to 'Apagar', project, method: :delete, data: { confirm: 'Tem certeza?' } %></td> -->
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+    <div class="text-center">
+      <%#= link_to 'Novo Projeto', new_project_path, class: 'btn btn-primary' %>
+    </div>
+    <% end %>
+
+    <% unless @events.nil? %>
+
+      <h2>Resumo</h2>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Duração</th>
+            <th>Tipo</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @events.each do |event| %>
+            <% if event.log.user == current_user %>
+              <tr>
+                <td><%= event.date %></td>
+                <td><%= event.duration.strftime('%H:%M:%S') %></td>
+                <td><%= event.log.tag.description.slice!(6..-1).upcase %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+
+      <br>
+      <div class="text-center">
+        <%= link_to 'Novo Registro', new_log_path, class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+
+  <% else %>
+    <p>Por favor, efetue o <%= link_to "Login", new_user_session_path %> para registrar as horas trabalhadas.</p>
+  <% end %>
+
+
+</div>

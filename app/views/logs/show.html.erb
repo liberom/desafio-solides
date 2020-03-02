@@ -1,19 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <h2>Registro</h2>
+  <p>
+    <strong>ID:</strong>
+    <%= @log.id %>
+  </p>
+  <p>
+    <strong>Usuário:</strong>
+    <%= @log.user.email %>
+  </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @log.user_id %>
-</p>
+  <p>
+    <strong>Projeto:</strong>
+    <%= @log.project.name %>
+  </p>
 
-<p>
-  <strong>Project:</strong>
-  <%= @log.project_id %>
-</p>
+  <p>
+    <strong>Descrição:</strong>
+    <%= @log.tag.description %>
+  </p>
 
-<p>
-  <strong>Tag:</strong>
-  <%= @log.tag_id %>
-</p>
+  <%= link_to 'Voltar', logs_path, class: 'btn btn-secondary' %> <!-- | -->
+  <%#= link_to 'Editar', edit_log_path(@log), class: 'btn btn-warning' %> <!-- | -->
+  <%= link_to 'Apagar', @log, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %>
 
-<%= link_to 'Edit', edit_log_path(@log) %> |
-<%= link_to 'Back', logs_path %>
+</div>
+
+
